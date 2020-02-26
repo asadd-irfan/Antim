@@ -1,0 +1,97 @@
+<div>
+    <div class="row  base-row">
+      <app-dashbored-navbar></app-dashbored-navbar>
+
+        <aside class="left-sidebar col-lg-4">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <app-sidebar></app-sidebar>
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <div class="page-wraper-right row">
+            <app-setting></app-setting>
+        </div>
+
+
+
+    <div class="page-wraper-right">
+      <div class="row" *ngIf="currentUser">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 mt-3 alert alert-warning " id="move-dashboredF-icon" *ngIf="!currentUser?.emailConfirmed">
+                <p  class= "mb-0"> <i class="mr-1 fa fa-exclamation-circle"></i>
+                    {{ 'Dashbored.EmailnoTverified' | translate }}
+                    <span class="ml-2 mr-3">  <u><a (click)="resendEmail()"> {{ 'Dashbored.ResendVerificationLink' | translate }}   </a></u>
+                    </span>
+                  </p>
+        </div>
+      </div>
+
+                    <div class="mat-card col-lg-12 mt-5 row welcome-card p-2 align-items-center" style="width: 99% !important;">
+                        <img class="col-lg-2 p-0" src="assets/images/bookWithMen.svg">
+                        <div class="col-lg-7 p-0" >
+                                <p class="grey-text-color" style="font-size: 15px !important;">{{ 'Dashbored.WelcomeMsg1' | translate }} {{currentUser?.firstName}}!  <br/>{{ 'Dashbored.WelcomeMsg2' | translate }}</p>
+                            </div>
+                        <form class="col-lg-3 p-0 d-flex justify-content-center" *ngIf="funderDashboardData">
+                        <div class="form-group">
+                            <label for="dateOfBirth" class="balance-style mt-2">{{ 'Dashbored.YourAntimBalance' | translate }}<span style="color: green; font-size: 17px;">{{funderDashboardData?.funderBalance}} {{ 'Dashbored.SR' | translate }} </span> </label>
+                        </div>
+                        </form>
+                    </div>
+
+                    <!-- <div class="col-lg-11 row justify-content-around mt-5 dashbored-info" *ngIf="funderDashboardData"> -->
+                    <div class="col-lg-11 row justify-content-around mt-5 dashbored-info">
+                        <!-- <div class="col-lg-2 blue-bg cursor-pointer" [routerLink]="[ '/requests-lender' , 'Ongoing']">   -->
+                        <div class="col-lg-2 blue-bg">
+                          <div class="dashbored-info-content">
+                                <p class="color-white">{{ 'Dashbored.OngoingRequests' | translate }}  </p>
+                                <div>{{funderDashboardData?.noOfOngoingRequests}}</div>
+                            </div>
+                        </div>
+                    <div class="col-lg-2 purple-bg">
+                        <div class="dashbored-info-content">
+                            <p class="color-white">{{ 'Dashbored.FundedUsers' | translate }}   </p>
+                            <div>{{funderDashboardData?.noOfFundedCustomers}}</div>
+                          </div>
+                        </div>
+                        <div class="col-lg-2 black-bg">
+                            <div class="dashbored-info-content">
+                                <p class="color-white">{{ 'Dashbored.TotalAmountofFund' | translate }}</p>
+                                <div>{{funderDashboardData?.totalAmountOfFund}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 blue-bg-2">
+                            <div class="dashbored-info-content">
+                                <p class="color-white">{{ 'Dashbored.TotalreservedInstallments' | translate }}   </p>
+                                <div>{{funderDashboardData?.totalReservedInstallments}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 purple-bg-2">
+                            <div class="dashbored-info-content">
+                                <p class="color-white">{{ 'Dashbored.Totalprofits' | translate }}  </p>
+                                <div>{{funderDashboardData?.totalFunderProfit}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" >
+                     <div class="col-lg-12" *ngIf="error">
+                      <p style="color: red; font-size: 14px; text-align: center; margin-top: 40px;font-weight: bold;">
+                        {{ 'Dashbored.InternalServerError' | translate }}
+                      </p>
+                     </div>
+                    </div>
+
+                    <div class="col-lg-11 mt-3 row justify-content-center align-items-center py-4 mt-5 align-fixed-mobile">
+                            <!-- <div class="form-group col-lg-2 col-6">
+                                   <button class="btn btn-info btn-lg btn-block btn-black mt-2 btn-lowecase" [routerLink]="[ '/requests-funder']">{{ 'Dashbored.MyRequest' | translate }} </button>
+                           </div> -->
+                           <!-- <div class="form-group col-lg-3 col-6">
+                               <button class="btn btn-info btn-lg btn-block btn-purple mt-2 btn-lowecase">Make New Request</button>
+                           </div> -->
+                    </div>
+                    <ngx-spinner bdColor = "rgba(51, 51, 51, 0.8)"size = "medium"
+                    color = "white" type = "ball-clip-rotate" [fullScreen] = "true">
+                    <p style="color: white; margin-top:50px;font-size: 26px;" >{{ 'SignUp.Loading' | translate }} </p>
+                    </ngx-spinner>
+        </div>
+    </div>

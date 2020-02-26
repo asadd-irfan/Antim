@@ -1,0 +1,16 @@
+
+.btn-style {
+  width: 180px !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+}
+
+@media (max-width: 692px){
+  .mobile-view {
+    height: 60vh !important;
+  }
+}
+.home-desc-2{
+  font-size: 30px;
+  font-weight: bold;
+}

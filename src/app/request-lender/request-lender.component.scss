@@ -1,0 +1,50 @@
+.error {
+  color: rgb(124, 117, 117);
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 250px;
+}
+
+#InstallmentDetailsTable td{
+  background-color: rgb(233, 234, 235) !important;
+}
+
+#InstallmentDetailsTable  th.mat-header-cell {
+  background-color: rgb(233, 234, 235) !important;
+  font-size: 14px !important;
+  color:  black !important;
+  font-weight: 600 !important;
+}
+#InstallmentDetailsTable tr.mat-row:after {
+  border-style: none !important;
+}
+#InstallmentDetailsTable  td.mat-cell:last-child {
+  width: 35px !important;
+}
+#InstallmentDetailsTable td.mat-cell:last-child, td.mat-footer-cell, table th.mat-header-cell:last-child {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+#InstallmentDetailsTable td.mat-cell:first-child, td.mat-footer-cell, table th.mat-header-cell:first-child {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+@media (max-width: 992px){
+  form.col-lg-9.row.antim-form{
+    padding: 33px 20px !important;
+  }
+  // #paginator{
+  //   margin-right: 35px !important;
+  // }
+  table.mat-table {
+    margin-left: -20px !important;
+  }
+  #InstallmentDetailsTable{
+    margin-left: 10px !important;
+  }
+}
+
+#table-req td.mat-cell, td.mat-footer-cell, table th.mat-header-cell {
+  padding: 14px !important;
+}

@@ -1,0 +1,101 @@
+<div>
+        <div class="row base-row">
+          <app-dashbored-navbar></app-dashbored-navbar>
+
+            <aside class="left-sidebar col-lg-4">
+                <!-- Sidebar scroll-->
+                <div class="scroll-sidebar">
+                    <app-sidebar></app-sidebar>
+                </div>
+                <!-- End Sidebar scroll-->
+            </aside>
+            <div class="page-wraper-right row">
+                <app-setting></app-setting>
+            </div>
+
+
+            <div class="page-wraper-right mb-5">
+              <div class="mat-card col-lg-11 mt-5 row welcome-card inner p-2 align-items-center">
+                <div class="col-lg-3 ">
+                  <div class="row">
+                    <div class="col-lg-7 pl-4 pr-5">
+                      <img  src="assets/images/bookWithMen 2.svg">
+                    </div>
+                    <div class="col-lg-5 p-0">
+                      <p class="grey-text-color mt-5">{{ 'Notifications.Notifications' | translate }} </p>
+                    </div>
+                  </div>
+                  </div>
+                        <form class="col-lg-3">
+                    <div class="form-group">
+                      <label for="Filter" class="font-size-13">{{ 'Notifications.FromDate' | translate }}</label>
+                      <div class="input-group">
+                        <input (click)="dp.toggle()" id="dateF" (dateSelect) = "selectFromDate($event)" [value]="fromDate" class="form-control date-picker" ngbDatepicker #dp="ngbDatepicker">
+
+                        <i style="color: rgb(99, 94, 94) !important;" class="fa fa-calendar"></i>
+                      </div>
+                    </div>
+           </form>
+           <form class="col-lg-3">
+              <div class="form-group">
+                <label for="Filter" class="font-size-13">{{ 'Notifications.ToDate' | translate }}</label>
+                <div class="input-group">
+                      <input (click)="d.toggle()" id="dateT" (dateSelect) = "selectToDate($event)" [value]="toDate" class="form-control date-picker"  ngbDatepicker #d="ngbDatepicker">
+
+                   <i style="color: rgb(99, 94, 94) !important;" class="fa fa-calendar"></i>
+                  </div>
+              </div>
+          </form>
+          <!-- <div class="col-lg-1" ></div> -->
+          <div class="col-lg-3" id="button">
+            <button class="btn btn-responsive btn-purple mt-2 " [disabled]="!disableSearch" (click)="filterRequests()">{{ 'Notifications.search' | translate }}</button>
+            <!-- </div> -->
+                <button class="btn btn-responsive btn-purple mt-2 " [disabled]="!disableReset" (click)="resetPage()">{{ 'Notifications.Reset' | translate }}</button>
+           </div>
+
+                  <!-- <div class="form-group has-search col-lg-4">
+                      <input type="text" class="form-control" placeholder="Search">
+                      <span class="fa fa-search form-control-feedback"></span>
+                   </div> -->
+
+                  </div>
+
+                  <div *ngIf="getNotifications">
+
+                          <div class="mat-card col-lg-11 row mt-4" *ngFor="let notification of funderNotifications">
+                              <div>
+                                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path fill-rule="evenodd" clip-rule="evenodd" d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="#5C20D2" fill-opacity="0.0998143"/>
+                                      <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
+                                      <path fill-rule="evenodd" clip-rule="evenodd" d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="white"/>
+                                      </mask>
+                                      <g mask="url(#mask0)">
+                                      <path fill-rule="evenodd" clip-rule="evenodd" d="M6 14.7576L25 9L20.3939 19.9394L12.9091 17.6364L11.1818 22.8182L10.6061 17.0606L6 14.7576Z" fill="#C7C7C7"/>
+                                      <path fill-rule="evenodd" clip-rule="evenodd" d="M24.2424 10L11 16.9091L11.1958 21.8952L13.303 17.4848L24.2424 10Z" fill="black"/>
+                                      </g>
+                                  </svg>
+                              </div>
+                              <div class="col-lg-8">
+                                <h5 class="font-purple font-bold no-letter-spacing m-0">{{ userLang == 'arabic' ? notification.arNotificationTitle : notification.enNotificationTitle }}</h5>
+                                <div class="grey-text-color mb-2 mt-1">{{ userLang == 'arabic' ? notification.arDate : notification.date }} </div>
+                            </div>
+                            <p class="dark-text-color margin-notificaiton col-lg-12" *ngIf="userLang == 'english'">{{ notification.enNotificationDescription }} </p>
+                            <p class="dark-text-color margin-notificaiton dir-rtl col-lg-12" *ngIf="userLang == 'arabic'">{{ notification.arNotificationDescription  }} </p>
+
+                          <div class="col-lg-12  row  base-row d-flex flex-row-reverse" *ngIf="notification.status == 2">
+                            <div class="form-group col-lg-3">
+                              <button class="btn btn-info btn-lg btn-block btn-purple" (click)="markAsReadNotification(notification.id)">{{ 'Notifications.MarkasRead' | translate }} </button>
+                            </div>
+                      </div>
+                     </div>
+                        </div>
+                        <div *ngIf="!getNotifications">
+                          <h3 class="notificationError">{{ 'Notifications.NoNotificationsFound' | translate }}</h3>
+                        </div>
+                          <ngx-spinner bdColor = "rgba(51, 51, 51, 0.8)"size = "medium"
+                          color = "white" type = "ball-clip-rotate" [fullScreen] = "true">
+                          <p style="color: white; margin-top:50px;font-size: 26px;" >{{ 'SignUp.Loading' | translate }}</p>
+                        </ngx-spinner>
+
+            </div>
+        </div>

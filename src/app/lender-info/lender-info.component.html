@@ -1,0 +1,196 @@
+<div class="container header-inner">
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center flex-column text-center mt-min-100">
+                <img src="assets/images/image-antim.svg" class="wow fadeInUp" data-wow-duration=".8s" data-wow-delay="0.5s" style="height: 161px;">
+                <h1 class="wow fadeInUp my-4 pb-2" data-wow-duration=".8s" data-wow-delay="0.5s">{{ 'HOME.Lender' | translate }}</h1>
+                <p class="wow fadeInUp text-grey-desc" data-wow-duration=".8s" data-wow-delay="0.5s"> {{ 'Lender.LenderDescription' | translate }}</p>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="container pb-3">
+            <div class="row py-5">
+                <video controls class="col-lg-12">
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                        <source src="w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+                        Your browser does not support HTML5 video.
+                </video>
+            </div>
+    </div> -->
+    <div class="container pb-3">
+     <div class="row pb-5 margin-top-ve">
+      <div class="mx-auto margin-top-bl mb-5" style="text-align: center;">
+        <h3 class="font-bold my-3" >{{ 'Lender.LenderAdvantages' | translate }}</h3>
+         </div>
+
+     </div>
+     <dl class="row" >
+      <div class="col-md-4 my-lg-2">
+          <dt class="box-content wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.4s; animation-name: fadeInUp;">
+              <h5>{{ userLang == 'arabic' ? LenderPage.Section1.TitleAr : LenderPage.Section1.TitleEn }}</h5>
+              {{ userLang == 'arabic' ? LenderPage.Section1.ContentAr : LenderPage.Section1.ContentEn }}</dt>
+      </div>
+      <div class="col-md-4 my-lg-2">
+          <dt class="box-content wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.4s; animation-name: fadeInUp;">
+            <h5>{{ userLang == 'arabic' ? LenderPage.Section2.TitleAr : LenderPage.Section2.TitleEn }}</h5>
+            {{ userLang == 'arabic' ? LenderPage.Section2.ContentAr : LenderPage.Section2.ContentEn }}</dt>
+    </div>
+      <div class="col-md-4 my-lg-2">
+          <dt class="box-content wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.4s; animation-name: fadeInUp;">
+            <h5>{{ userLang == 'arabic' ? LenderPage.Section3.TitleAr : LenderPage.Section3.TitleEn }}</h5>
+            {{ userLang == 'arabic' ? LenderPage.Section3.ContentAr : LenderPage.Section3.ContentEn }}</dt>
+    </div>
+      <div class="col-md-4 my-lg-2">
+          <dt class="box-content wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.4s; animation-name: fadeInUp;">
+            <h5>{{ userLang == 'arabic' ? LenderPage.Section4.TitleAr : LenderPage.Section4.TitleEn }}</h5>
+            {{ userLang == 'arabic' ? LenderPage.Section4.ContentAr : LenderPage.Section4.ContentEn }}</dt>
+    </div>
+      <div class="col-md-4 my-lg-2">
+          <dt class="box-content wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.4s; animation-name: fadeInUp;">
+            <h5>{{ userLang == 'arabic' ? LenderPage.Section5.TitleAr : LenderPage.Section5.TitleEn }}</h5>
+            {{ userLang == 'arabic' ? LenderPage.Section5.ContentAr : LenderPage.Section5.ContentEn }}</dt>
+    </div>
+    </dl>
+
+
+    </div>
+
+    <div class="container quick-steps mt-5">
+        <div class="row">
+        <h2 class="homepage-section-header col-lg-12 text-center my-4 font-bold ">{{ 'Lender.HowItWorks' | translate }}</h2>
+        <div id="quick-steps-carousel" class="col-lg-12">
+            <div class="row my-5">
+                <div class="hidden-xs col-lg-5">
+                    <div class="carousel-inner">
+                      <div class="item active"><img  src="{{image}}" width="516" height="416"></div>
+                      <!-- <div class="item"><img alt="Accept your terms" src="assets/images/tab2.png" width="516" height="416"></div>
+                            <div class="item"><img alt="Repayment" src="assets/images/tab1.png" width="516" height="416"></div> -->
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6" >
+                      <ul class="quick-steps-carousel-nav">
+                        <li class="quick-steps-navitem media" (click)="changeImage('assets/images/tab1.png')" [ngClass]="status1 ? 'active-item' : ''">
+                              <div class="pull-left"><div class="media-object quick-step-num">1</div></div>
+                              <div class="media-body"><div class="h4 quick-step-header line-height-lg">{{ userLang == 'arabic' ? LenderPage.Section6.TitleAr : LenderPage.Section6.TitleEn }}</div>
+                              <p>{{ userLang == 'arabic' ? LenderPage.Section6.ContentAr : LenderPage.Section6.ContentEn }}</p>
+                            </div>
+                      </li>
+                      <li class="quick-steps-navitem media " (click)="changeImage('assets/images/tab2.png')" [ngClass]="status2 ? 'active-item' : ''">
+                              <div class="pull-left"><div class="media-object quick-step-num">2</div></div>
+                              <div class="media-body"><div class="h4 quick-step-header line-height-lg">{{ userLang == 'arabic' ? LenderPage.Section7.TitleAr : LenderPage.Section7.TitleEn }}</div>
+                              <p>{{ userLang == 'arabic' ? LenderPage.Section7.ContentAr : LenderPage.Section7.ContentEn }}</p>
+                            </div>
+                          </li>
+                          <li class="quick-steps-navitem media " (click)="changeImage('assets/images/asad.png')" [ngClass]="status3 ? 'active-item' : ''">
+                                <div class="pull-left"><div class="media-object quick-step-num">3</div></div>
+                                <div class="media-body"><div class="h4 quick-step-header line-height-lg">{{ userLang == 'arabic' ? LenderPage.Section8.TitleAr : LenderPage.Section8.TitleEn }}</div>
+                                <p>{{ userLang == 'arabic' ? LenderPage.Section8.ContentAr : LenderPage.Section8.ContentEn }}</p>
+                              </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+              </div>
+          </div>
+      </div>
+
+            <div class="container mt-5 d-flex justify-content-center flex-column text-center">
+                    <div class="row base-row justify-content-center row-arabic-revrese">
+                            <div class="col-lg-6 text-center">
+                               <svg width="70" height="109" viewBox="0 0 108 109" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                   <path fill-rule="evenodd" clip-rule="evenodd" d="M16.0509 21.4003C24.4747 1.65994 90.9444 8.59544 66.9393 69.4567C42.9341 130.318 7.62718 41.1406 16.0509 21.4003Z" fill="#39A4E9"/>
+                                   <path fill-rule="evenodd" clip-rule="evenodd" d="M50.3996 18.2053C62.6559 27.3185 98.6326 73.1854 35.508 90.6697C-27.6165 108.154 38.1433 9.09213 50.3996 18.2053Z" fill="#5C20D2"/>
+                                   <path fill-rule="evenodd" clip-rule="evenodd" d="M27.7635 31.5357C41.3393 24.5311 98.3964 12.3499 86.4624 76.6666C74.5284 140.983 14.1877 38.5403 27.7635 31.5357Z" fill="black"/>
+                               </svg>
+                               <h3 class="col-lg-12 text-center font-purple font-bold mb-4">{{ userLang == 'arabic' ? LenderPage.Section9.TitleAr : LenderPage.Section9.TitleEn }}</h3>
+                              </div>
+                              <div class="col-lg-5 text-center mt-5 box-content-2">
+                                <ol class="text-left">
+                                  <li>{{ userLang == 'arabic' ? LenderPage.Section9.Content1Ar : LenderPage.Section9.Content1En }}</li>
+                                  <li>{{ userLang == 'arabic' ? LenderPage.Section9.Content2Ar : LenderPage.Section9.Content2En }}</li>
+                                  <li>{{ userLang == 'arabic' ? LenderPage.Section9.Content3Ar : LenderPage.Section9.Content3En }}</li>
+                                  <li>{{ userLang == 'arabic' ? LenderPage.Section9.Content4Ar : LenderPage.Section9.Content4En }}</li>
+                                </ol>
+                              </div>
+
+                        </div>
+                        <div class="row base-row justify-content-center row-arabic-revrese">
+                                <div class="col-lg-6 text-center">
+                                        <svg width="70" height="109" viewBox="0 0 108 109" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.0509 21.4003C24.4747 1.65994 90.9444 8.59544 66.9393 69.4567C42.9341 130.318 7.62718 41.1406 16.0509 21.4003Z" fill="#39A4E9"/>
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M50.3996 18.2053C62.6559 27.3185 98.6326 73.1854 35.508 90.6697C-27.6165 108.154 38.1433 9.09213 50.3996 18.2053Z" fill="#5C20D2"/>
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M27.7635 31.5357C41.3393 24.5311 98.3964 12.3499 86.4624 76.6666C74.5284 140.983 14.1877 38.5403 27.7635 31.5357Z" fill="black"/>
+                                        </svg>
+                                        <h3 class="col-lg-12 text-center font-purple font-bold mb-4"  >{{ userLang == 'arabic' ? LenderPage.Section10.TitleAr : LenderPage.Section10.TitleEn }}</h3>
+                                      </div>
+                                     <div class="col-lg-5 text-center mt-5 box-content-2"   >
+                                      <ol class="text-left">
+                                        <li>{{ userLang == 'arabic' ? LenderPage.Section10.Content1Ar : LenderPage.Section10.Content1En }}</li>
+                                        <li>{{ userLang == 'arabic' ? LenderPage.Section10.Content2Ar : LenderPage.Section10.Content2En }}</li>
+                                        <li>{{ userLang == 'arabic' ? LenderPage.Section10.Content3Ar : LenderPage.Section10.Content3En }}</li>
+                                      </ol>
+                                    </div>
+
+                            </div>
+
+
+                    <div class="row base-row justify-content-center row-arabic-revrese">
+                            <div class="col-lg-6 text-center">
+                                <svg width="70" height="109" viewBox="0 0 108 109" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.0509 21.4003C24.4747 1.65994 90.9444 8.59544 66.9393 69.4567C42.9341 130.318 7.62718 41.1406 16.0509 21.4003Z" fill="#39A4E9"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M50.3996 18.2053C62.6559 27.3185 98.6326 73.1854 35.508 90.6697C-27.6165 108.154 38.1433 9.09213 50.3996 18.2053Z" fill="#5C20D2"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M27.7635 31.5357C41.3393 24.5311 98.3964 12.3499 86.4624 76.6666C74.5284 140.983 14.1877 38.5403 27.7635 31.5357Z" fill="black"/>
+                                </svg>
+                                <h3 class="col-lg-12 text-center font-purple font-bold mb-4"  >{{ userLang == 'arabic' ? LenderPage.Section11.TitleAr : LenderPage.Section11.TitleEn }}</h3>
+                              </div>
+                              <div class="col-lg-5 text-center mt-5 box-content-2"   >
+                                <ol class="text-left">
+                                  <li>{{ userLang == 'arabic' ? LenderPage.Section11.Content1Ar : LenderPage.Section11.Content1En }}</li>
+                                  <li>{{ userLang == 'arabic' ? LenderPage.Section11.Content2Ar : LenderPage.Section11.Content2En }}</li>
+                                  <li>{{ userLang == 'arabic' ? LenderPage.Section11.Content3Ar : LenderPage.Section11.Content3En }}</li>
+                                  <li>{{ userLang == 'arabic' ? LenderPage.Section11.Content4Ar : LenderPage.Section11.Content4En }}</li>
+                                  <li>{{ userLang == 'arabic' ? LenderPage.Section11.Content5Ar : LenderPage.Section11.Content5En }}</li>
+                                    </ol>
+                              </div>
+
+                        </div>
+            </div>
+
+
+            <div class="card container mt-5">
+              <div class="card-body row">
+                  <h3 class="card-title py-4 col-lg-12 font-bold ">{{ userLang == 'arabic' ? FAQ_Lender.Section.TitleAr : FAQ_Lender.Section.TitleEn }}</h3>
+                  <div class="row" *ngIf="userLang == 'arabic'">
+                    <ngb-accordion [closeOthers]="true" class="col-lg-12" *ngFor="let fqa of FAQ_Lender.Section.Ar_QA; let i = index;">
+                      <ngb-panel id="static-1" title="{{fqa.ArQuestion}}">
+                          <ng-template ngbPanelContent>
+                            {{ fqa.ArAnswer }}
+                          </ng-template>
+                      </ngb-panel>
+                  </ngb-accordion>
+
+                  </div>
+                  <div class="row" *ngIf="userLang == 'english'">
+                    <ngb-accordion [closeOthers]="true" class="col-lg-12" *ngFor="let fqa of FAQ_Lender.Section.En_QA; let i = index;">
+                      <ngb-panel id="static-1" title="{{fqa.EnQuestion}}">
+                          <ng-template ngbPanelContent>
+                            {{ fqa.EnAnswer }}
+                          </ng-template>
+                      </ngb-panel>
+                  </ngb-accordion>
+
+                  </div>
+              </div>
+          </div>
+                <div class="container py-3">
+                        <div class="row my-3">
+                            <div class="col-lg-12 d-flex justify-content-center flex-column text-center my-3">
+                                <button type="button" class="btn btn-block btn-antim btn-rounded mx-auto py-3" [routerLink]="['/signup']">{{ 'Lender.SignUpas' | translate }}</button>
+                            </div>
+                        </div>
+                    </div>
+<footer class="footer py-5 bg-black">
+
+    <app-footer></app-footer>
+
+</footer>

@@ -1,0 +1,35 @@
+.btn-responsive {
+  padding: 10px;
+  width: 82px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+@media (max-width: 992px){
+  .btn-responsive {
+    width: 100px;
+  }
+}
+#dateT {
+  direction: ltr !important;
+}
+#dateF {
+  direction: ltr !important;
+}
+.margin-notificaiton {
+  margin-left: 2.5em;
+  margin-right: 2.5em;
+ }
+@media (max-width: 792px){
+  .margin-notificaiton {
+    margin-left: 0;
+    margin-right: 0;
+   }
+}
+.dir-rtl {
+  direction: rtl !important;
+}
+.col-lg-11{
+  max-width:  96% !important;
+}
+

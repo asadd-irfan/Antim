@@ -1,0 +1,69 @@
+<div class="container-fluid h-100 mt-3">
+  <div class="mt-min-100-ls"></div>
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3 background-box px-5 py-5 text-center">
+                    <img src="assets/images/user.svg" alt="antim">
+                <p class="first-line-black-text row base-row d-flex justify-content-center my-3">{{ 'login.loginDesc1' | translate }} </p>
+                <p class="second-line-grey-text row d-flex justify-content-center mt-2">{{ 'login.loginDesc2' | translate }} </p>
+                <form class="form-log-in mt-5 form-antim"  [formGroup]="LoginForm">
+                    <div class="form-group text-left">
+                        <label for="name">{{ 'login.EmailorUsername' | translate }}	<span class="red-color"> *</span></label>
+                        <input formControlName="username" name="username" class="form-control form-control-lg" placeholder="{{ 'login.TypeEmailorUsername' | translate }}" type="text" required minlength="5"  [(ngModel)]="loginUsername">
+                        <div *ngIf="LoginForm.controls['username'].touched && LoginForm.controls['username'].hasError('required')" class="error-msg alert alert-danger text-left">{{ 'login.requiredEmailorUsername' | translate }}</div>
+                        <!-- <div *ngIf="LoginForm.controls['username'].touched && LoginForm.controls['username'].hasError('minlength')" class="error-msg alert alert-danger text-left">Username length must be at least 4 characters long. </div> -->
+                    </div>
+                    <div class="form-group text-left pt-2">
+                        <label for="password">{{ 'login.Password' | translate }}<span class="red-color"> *</span></label>
+                        <input formControlName="password" name="password" class="form-control form-control-lg" placeholder="***********" type="password" required minlength="9" [(ngModel)]="loginPassword">
+                        <div *ngIf="LoginForm.controls['password'].touched && LoginForm.controls['password'].hasError('required')" class="error-msg alert alert-danger text-left">{{ 'login.Passwordrequired' | translate }}</div>
+                        <div *ngIf="LoginForm.controls['password'].touched && LoginForm.controls['password'].hasError('minlength')" class="error-msg alert alert-danger text-left">{{ 'login.PasswordValidation' | translate }}</div>
+                    </div>
+                    <div class="form-group mt-4">
+                        <!-- <button class="btn btn-info btn-lg btn-block btn-purple mt-5" [routerLink]="[ '/dashbored-borrower' ]" [disabled]="disabledSubmitButton">Sign In</button> -->
+
+                        <button class="btn btn-info btn-lg btn-block btn-purple mt-2" (click)="login(content)" [disabled]="!LoginForm.valid">{{ 'login.SignIn' | translate }}</button>
+                        <ngx-spinner bdColor = "rgba(51, 51, 51, 0.8)"size = "medium"
+                        color = "white" type = "ball-clip-rotate" [fullScreen] = "true">
+                        <p style="color: white; margin-top:50px;font-size: 26px;" > {{ 'SignUp.Loading' | translate }} </p>
+                        </ngx-spinner>
+                      </div>
+                      <div class="row  pt-2" >
+                        <div class="col-lg-3 col-2"></div>
+                        <div class="col-lg-9 col-9 d-flex justify-content-start">
+                          <p><a class="font-purple cursor-pointer font-14" [routerLink]="[ '/forget-password' ]" ><u>{{ 'login.forgetPassword' | translate }}</u></a></p>
+                        </div>
+                      </div>
+                        <div class="row ">
+                        <div class="col-lg-3 col-2"></div>
+                        <div class="col-lg-9 col-9 d-flex justify-content-start">
+                          <p class="dark-grey-text-color font-14" >{{ 'login.newUser' | translate }}<a [routerLink]="[ '/signup' ]" class="font-purple font-14 mx-2">{{ 'login.SignUp' | translate }}</a></p>
+                      </div>
+                      </div>
+                </form>
+                <ng-template #content let-modal>
+
+                  <div class="modal-header">
+                      <h4 class="modal-title">{{ 'login.reactiveRequest' | translate }}</h4>
+                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body py-3">
+                      <p class="my-3 mx-3">
+                        {{ 'login.reactiveRequestMSG' | translate }}
+                        </p>
+                      <div class="row py-2" style="width: 100%;">
+                          <div class="col-lg-6"></div>
+                      <div class="col-lg-3"><button class="btn btn-info btn-lg btn-block btn-purple mt-2 " (click)="sendRequestToAdmin()">{{ 'Requests.Yes' | translate }}</button></div>
+                      <div class="col-lg-3"><button class="btn btn-info btn-lg btn-block btn-purple mt-2 " (click)="modal.close('Close click')">{{ 'Requests.Noo' | translate }}</button></div>
+
+                    </div>
+                    </div>
+                  </ng-template>
+                  <ngx-spinner bdColor = "rgba(51, 51, 51, 0.8)"size = "medium"
+                  color = "white" type = "ball-clip-rotate" [fullScreen] = "true">
+                  <p style="color: white; margin-top:50px;font-size: 26px;" > {{ 'SignUp.Loading' | translate }} </p>
+                  </ngx-spinner>
+            </div>
+        </div>
+    </div>

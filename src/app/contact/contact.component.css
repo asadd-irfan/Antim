@@ -1,0 +1,13 @@
+.contact-headings{
+  font-weight: 500 !important;
+  font-size: 18px !important;
+}.font-18{
+  font-size: 18px !important;
+  }
+.color-light{
+color: rgb(170, 170, 170)!important;
+}
+.msg-max-length{
+  font-size: 12px;
+  color: rgb(170, 166, 166);
+}

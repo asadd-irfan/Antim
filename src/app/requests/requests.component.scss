@@ -1,0 +1,26 @@
+.btn-responsive {
+  padding: 10px;
+  width: 80px;
+}
+
+@media (max-width: 992px){
+  .btn-responsive {
+    width: 100px;
+  }
+  // #paginator{
+  //   margin-right: 35px !important;
+  // }
+}
+.error {
+  color: rgb(124, 117, 117);
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 250px;
+}
+#dateT {
+  direction: ltr !important;
+}
+#dateF {
+  direction: ltr !important;
+}
+

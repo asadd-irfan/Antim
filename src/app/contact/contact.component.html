@@ -1,0 +1,188 @@
+<div class="container header-inner">
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center flex-column text-center mt-min-100">
+                <img src="assets/images/image-antim.svg" class="wow fadeInUp" data-wow-duration=".8s" data-wow-delay="0.5s" style="height: 161px;">
+                <h1 class="wow fadeInUp my-4 pb-2" data-wow-duration=".8s" data-wow-delay="0.5s" >{{ userLang == 'arabic' ? ContactUsPage.Section1.TitleAr : ContactUsPage.Section1.TitleEn }}</h1>
+                <p class="wow fadeInUp text-grey-desc" data-wow-duration=".8s" data-wow-delay="0.5s">{{ userLang == 'arabic' ? ContactUsPage.Section1.ContentAr : ContactUsPage.Section1.ContentEn }}</p>
+            </div>
+        </div>
+ </div>
+
+ <div class="container">
+     <div class="row margin-top-ve">
+            <div class="col-md-12 text-center">
+                    <div class="card">
+                        <div class="card-body py-0">
+                            <ngb-tabset type="pills" [orientation]="currentOrientation">
+                              <ngb-tab title="{{ 'contact.ContactForm' | translate }}">
+                                <ng-template ngbTabContent>
+                                  <!-- Default form contact -->
+                                <!-- <form class="text-center mat-card p-5 contact-form row justify-content-end" [formGroup]="contactForm" (ngSubmit)="onSubmit()"> -->
+                                <form class="text-center mat-card p-5 contact-form row justify-content-end" [formGroup]="contactForm" >
+                                        <!-- Name -->
+                                        <div class="form-group col-lg-12 mb-4">
+                                            <label class="text-left  contact-headings">{{ 'contact.Name' | translate }}<span class="red-color"> *</span></label>
+                                            <input type="text" formControlName="contactFormName" id="defaultContactFormName" mdbInput [(ngModel)]="name"
+                                            class="form-control" placeholder="{{ 'contact.NameType' | translate }}">
+                                            <div *ngIf="contactForm.controls['contactFormName'].touched && contactForm.controls['contactFormName'].hasError('required')" class="error-msg alert alert-danger text-left">{{ 'contact.Namerequired' | translate }}</div>
+                                            <!-- <div *ngIf="contactForm.controls['contactFormName'].touched && contactForm.controls['contactFormName'].hasError('pattern')" class="error-msg alert alert-danger text-left">Name must contains only characters.</div> -->
+
+                                        </div>
+                                        <!-- Email -->
+                                        <div class="form-group col-lg-8 mb-4">
+                                            <label class="text-left  contact-headings">{{ 'contact.Email' | translate }}<span class="red-color"> *</span></label>
+                                            <input type="email" formControlName="contactFormEmail" id="defaultContactFormEmail" mdbInput [(ngModel)]="email"
+                                            class="form-control" placeholder="{{ 'contact.emailType' | translate }}">
+                                            <div *ngIf="contactForm.controls['contactFormEmail'].touched && contactForm.controls['contactFormEmail'].hasError('required')" class="error-msg alert alert-danger text-left">{{ 'contact.Emailrequired' | translate }} </div>
+                                            <div *ngIf="contactForm.controls['contactFormEmail'].touched && contactForm.controls['contactFormEmail'].hasError('pattern')" class="error-msg alert alert-danger text-left">{{ 'SignUp.EmailValidate' | translate }}</div>
+
+                                         </div>
+                                          <!-- Phone Number -->
+                                         <!-- <div class="form-group col-lg-8 mb-4">
+                                                <label class="text-left font-bold">{{ 'contact.MobileNo' | translate }}</label>
+                                                <input type="text" formControlName="contactFormPhone" mdbInput [(ngModel)]="mobile"
+                                                class="form-control" placeholder="{{ 'contact.typeMobile' | translate }}" digitOnly
+                                                oninput="javascript: if (this.value.length >= 11) { document.getElementById('phonenumber').style.visibility = 'hidden'; }
+                                                else { document.getElementById('phonenumber').style.visibility = 'visible'; }" [(ngModel)]="signupPhone">
+                                                <div *ngIf="contactForm.controls['contactFormPhone'].touched && contactForm.controls['contactFormPhone'].hasError('required')" class="error-msg alert alert-danger text-left">{{ 'contact.Phonerequired' | translate }}</div>
+                                                <span class="redColor" id="phonenumber"> Phone number must be at least 11 characters long.</span>
+                                       </div> -->
+                                        <!-- Subject -->
+                                        <div class="form-group col-lg-4 mb-4">
+                                            <label class="text-left  contact-headings">{{ 'contact.CommentType' | translate }}<span class="red-color"> *</span></label>
+                                            <select formControlName="contactFormSubjects" class="browser-default custom-select" [(ngModel)]="messageType" >
+                                                <option value=""  selected disabled>{{ 'contact.Chooseoption' | translate }}</option>
+                                                <option value="1" >{{ 'contact.Suggestion' | translate }}</option>
+                                                <option value="2">{{ 'contact.ReportAbug' | translate }}</option>
+                                                <option value="3">{{ 'contact.FeatureRequest' | translate }}</option>
+                                                <option value="4">{{ 'contact.Feedback' | translate }}</option>
+                                                <option value="5">{{ 'contact.Other' | translate }}</option>
+                                            </select>
+                                            <svg  class="arrow" width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1 1.2113L7 10.7606L13 1.2113" stroke="#B4B2AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                            <div *ngIf="contactForm.controls['contactFormSubjects'].touched && !contactForm.controls['contactFormSubjects'].valid" class="error-msg alert alert-danger text-left">{{ 'contact.CommentTypeRequired' | translate }}</div>
+
+                                        </div>
+
+                                        <!-- Message -->
+                                        <div class="form-group col-lg-12 mb-4">
+                                        <label class="text-left contact-headings">{{ 'contact.Message' | translate }} <span class="red-color"> *</span></label>
+                                        <textarea formControlName="contactFormMessage" class="form-control rounded-0" mdbInput [(ngModel)]="message" id="exampleFormControlTextarea2"
+                                        maxlength="1000" rows="4" placeholder="{{ 'contact.MessageType' | translate }}"></textarea>
+                                       <div *ngIf="contactForm.controls['contactFormMessage'].touched && contactForm.controls['contactFormMessage'].hasError('required')" class="error-msg alert alert-danger text-left">{{ 'contact.MessageRequired' | translate }}</div>
+                                       <div class="msg-max-length mt-1 d-flex justify-content-end">{{ 'contact.maxMessagelength' | translate }}</div>
+
+                                        </div>
+
+                                        <!-- Copy -->
+                                        <!-- Send button -->
+                                        <button block="true"class="btn btn-info btn-lg btn-block btn-purple col-lg-3 " (click)="sendMessage()"
+                                        mdbWavesEffect type="button" [disabled]="!contactForm.valid">{{ 'contact.Send' | translate }}</button>
+
+                                    </form>
+                                    <div class="pattern-up pattern-form"></div>
+
+                                    <!-- Default form contact -->
+
+                                </ng-template>
+                              </ngb-tab>
+                              <ngb-tab>
+                                <ng-template ngbTabTitle>{{ 'contact.ContactInformation' | translate }} </ng-template>
+                                <ng-template ngbTabContent>
+                                    <div class="container mt-5 text-left">
+                                        <div class="row mat-card">
+                                            <div class="col-lg-12 dir-rtl">
+                                                <h4 class="font-bold font-purple heading-icon pt-3 pb-5">
+                                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="#5C20D2"/>
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M10.4 10H21.6C22.37 10 23 10.63 23 11.4V19.8C23 20.57 22.37 21.2 21.6 21.2H10.4C9.63 21.2 9 20.57 9 19.8V11.4C9 10.63 9.63 10 10.4 10Z" stroke="#F9F9F9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path d="M23 11.4L16 16.3L9 11.4" stroke="#F9F9F9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
+                                                        <span class="mx-1">{{ 'contact.Email' | translate }}</span>
+                                                    </h4>
+                                            </div>
+                                            <div class="col-lg-4 col-12">
+                                                <div class="contact-headings" >{{ userLang == 'arabic' ? ContactUsPage.Section2.TitleAr : ContactUsPage.Section2.TitleEn }}</div>
+                                                <div class="mt-2"><a class="  color-light">{{ userLang == 'arabic' ? ContactUsPage.Section2.ContentAr : ContactUsPage.Section2.ContentEn }}</a></div>
+                                            </div>
+                                            <!-- <div class="col-lg-4 col-12">
+                                                    <div class="contact-headings">Antim care</div>
+                                                    <div class="mt-2"><a href="mailto:sscare@antim.com" class="  color-light">sscare@intime.com</a></div>
+                                                </div> -->
+
+                                            <div class="col-lg-4 col-12">
+                                                <div class="contact-headings">{{ userLang == 'arabic' ? ContactUsPage.Section3.TitleAr : ContactUsPage.Section3.TitleEn }}</div>
+                                                <div class="mt-2"><a  class="  color-light">{{ userLang == 'arabic' ? ContactUsPage.Section3.ContentAr : ContactUsPage.Section3.ContentEn }}</a></div>
+                                            </div>
+                                        </div>
+                                        <div class="row mat-card mt-5">
+                                          <div class="col-lg-12 dir-rtl">
+                                            <h4 class="font-bold font-purple heading-icon pt-3 pb-5">
+                                                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="#5C20D2"/>
+                                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M22.9996 19.4817V21.5892C23.0012 21.9849 22.8356 22.3628 22.5435 22.6303C22.2514 22.8977 21.8598 23.0299 21.465 22.9943C19.299 22.7594 17.2183 22.0207 15.3902 20.8376C13.6895 19.7589 12.2475 18.3198 11.1667 16.6224C9.97711 14.7897 9.23677 12.7031 9.00572 10.5316C8.97015 10.1388 9.10164 9.74913 9.36807 9.45785C9.6345 9.16656 10.0113 9.00044 10.4065 9.00007H12.5183C13.2249 8.99313 13.8272 9.51008 13.9261 10.2084C14.0152 10.8829 14.1805 11.5451 14.4188 12.1825C14.6122 12.6959 14.4885 13.2748 14.1021 13.6648L13.2081 14.557C14.2102 16.3158 15.6693 17.7721 17.4316 18.7721L18.3256 17.8799C18.7164 17.4942 19.2963 17.3708 19.8108 17.5638C20.4495 17.8016 21.113 17.9666 21.7888 18.0556C22.4967 18.1552 23.0173 18.7685 22.9996 19.4817Z" stroke="#F9F9F9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                </svg>
+                                                                <span class="mx-1"> {{ 'contact.customersService' | translate }}</span>
+                                                               </h4>
+                                                </div>
+                                                <div class="col-lg-4 col-12">
+                                                    <div class="contact-headings">{{ userLang == 'arabic' ? ContactUsPage.Section4.TitleAr : ContactUsPage.Section4.TitleEn }}</div>
+                                                    <div class="mt-2"><a class="color-light">{{ userLang == 'arabic' ? ContactUsPage.Section4.ContentAr : ContactUsPage.Section4.ContentEn }}</a></div>
+                                                </div>
+                                                <div class="col-lg-4 col-12">
+                                                        <div class="contact-headings">{{ userLang == 'arabic' ? ContactUsPage.Section5.TitleAr : ContactUsPage.Section5.TitleEn }}</div>
+                                                        <div class="mt-2"><a class="color-light">{{ userLang == 'arabic' ? ContactUsPage.Section5.ContentAr : ContactUsPage.Section5.ContentEn }}</a></div>
+                                                    </div>
+
+                                                <div class="col-lg-4 col-12">
+                                                    <div class="contact-headings">{{ userLang == 'arabic' ? ContactUsPage.Section6.TitleAr : ContactUsPage.Section6.TitleEn }} </div>
+                                                    <div class="mt-2"><a class="color-light">{{ userLang == 'arabic' ? ContactUsPage.Section6.ContentAr : ContactUsPage.Section6.ContentEn }}</a></div>
+                                                </div>
+                                            </div>
+                                            <div class="row mat-card mt-5">
+                                              <div class="col-lg-12 dir-rtl">
+                                                        <h4 class="font-bold font-purple heading-icon pt-3 pb-5">
+                                                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="#5C20D2"/>
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M22.9996 19.4817V21.5892C23.0012 21.9849 22.8356 22.3628 22.5435 22.6303C22.2514 22.8977 21.8598 23.0299 21.465 22.9943C19.299 22.7594 17.2183 22.0207 15.3902 20.8376C13.6895 19.7589 12.2475 18.3198 11.1667 16.6224C9.97711 14.7897 9.23677 12.7031 9.00572 10.5316C8.97015 10.1388 9.10164 9.74913 9.36807 9.45785C9.6345 9.16656 10.0113 9.00044 10.4065 9.00007H12.5183C13.2249 8.99313 13.8272 9.51008 13.9261 10.2084C14.0152 10.8829 14.1805 11.5451 14.4188 12.1825C14.6122 12.6959 14.4885 13.2748 14.1021 13.6648L13.2081 14.557C14.2102 16.3158 15.6693 17.7721 17.4316 18.7721L18.3256 17.8799C18.7164 17.4942 19.2963 17.3708 19.8108 17.5638C20.4495 17.8016 21.113 17.9666 21.7888 18.0556C22.4967 18.1552 23.0173 18.7685 22.9996 19.4817Z" stroke="#F9F9F9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                    </svg>
+                                                                    <span class="mx-1"> {{ 'contact.MarketingSales' | translate }}</span>
+
+
+                                                            </h4>
+                                                    </div>
+                                                    <div class="col-lg-4 col-12">
+                                                        <div class="contact-headings">{{ userLang == 'arabic' ? ContactUsPage.Section7.TitleAr : ContactUsPage.Section7.TitleEn }}</div>
+                                                        <div class="mt-2"><a class="color-light">{{ userLang == 'arabic' ? ContactUsPage.Section7.ContentAr : ContactUsPage.Section7.ContentEn }}</a></div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                </ng-template>
+                              </ngb-tab>
+                              <ngb-tab title="{{ 'contact.OurLocation' | translate }}  ">
+                                <ng-template ngbTabContent>
+                                    <div class="container">
+                                        <div class="row">
+                                               <div class="col-lg-12" id="map" leaflet
+                                                style="height:100px;"
+                                                [leafletCenter]="mapCenter"
+                                                [leafletZoom]="zoomLevel"
+                                                [leafletLayers]="leafletLayers">
+                                           </div>
+                                           </div>
+                                        </div>
+                                </ng-template>
+                              </ngb-tab>
+                            </ngb-tabset>
+
+                     </div>
+                    </div>
+                </div>
+     </div>
+ </div>
+
+ <footer class="footer py-5 bg-black">
+  <app-footer></app-footer>
+
+    </footer>

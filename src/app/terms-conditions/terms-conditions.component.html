@@ -1,0 +1,35 @@
+<div class="container header-inner">
+        <div class="row mb-3">
+            <div class="col-lg-12 d-flex justify-content-center flex-column text-center mt-min-100">
+                <img src="assets/images/image-antim.svg" class="wow fadeInUp" data-wow-duration=".8s" data-wow-delay="0.5s" style="height: 161px;">
+                <h1 class="wow fadeInUp my-4 pb-2" data-wow-duration=".8s" data-wow-delay="0.5s">{{ userLang === 'arabic' ? TermsConditions.Section.TitleAr : TermsConditions.Section.TitleEn }} </h1>
+                <p class="wow fadeInUp text-grey-desc" data-wow-duration=".8s" data-wow-delay="0.5s">{{ userLang === 'arabic' ? TermsConditions.Section.ContentAr : TermsConditions.Section.ContentEn }}</p>
+            </div>
+        </div>
+ </div>
+
+ <div class="container pb-3">
+     <div class="row pb-5">
+         <div class="col-lg-12">
+             <p class="light-paragraph">
+              {{ userLang === 'arabic' ? TermsConditions.Section.ParagraphAr : TermsConditions.Section.ParagraphEn }}
+             </p>
+             <ul class="my-3  light-paragraph" *ngIf="userLang == 'english'" >
+              <li class="pt-2" *ngFor="let bulletpoint of TermsConditions.Section.EnBulletPoints;">{{ bulletpoint.bulletPoint }}</li>
+            </ul>
+             <ul class="my-3  light-paragraph" *ngIf="userLang == 'arabic'" dir="rtl">
+              <li class="pt-2" *ngFor="let bulletpoint of TermsConditions.Section.ArBulletPoints;">{{ bulletpoint.bulletPoint }}</li>
+            </ul>
+         </div>
+
+     </div>
+     <ngx-spinner bdColor = "rgba(51, 51, 51, 0.8)"size = "medium"
+     color = "white" type = "ball-clip-rotate" [fullScreen] = "true">
+     <p style="color: white; margin-top:50px;font-size: 26px;" > {{ 'SignUp.Loading' | translate }} </p>
+     </ngx-spinner>
+ </div>
+
+
+ <footer class="footer py-5 bg-black">
+  <app-footer></app-footer>
+    </footer>
